@@ -11,7 +11,7 @@ const isBase64 = (str: string): boolean => {
 
 export const validateUploadRequest = (
     req: Request,
-    res: Response,
+    _: Response,
     next: NextFunction
 ) => {
     const { image, customer_code, measure_datetime, measure_type } = req.body;
