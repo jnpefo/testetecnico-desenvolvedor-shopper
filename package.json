@@ -1,0 +1,31 @@
+{
+  "name": "testetecnico-desenvolvedor-shopper",
+  "version": "1.0.0",
+  "description": "Teste Técnico - Desenvolvedor Web Full Stack - Shopper",
+  "main": "app.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon --exec ts-node src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnpefo/testetecnico-desenvolvedor-shopper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnpefo/testetecnico-desenvolvedor-shopper/issues"
+  },
+  "homepage": "https://github.com/jnpefo/testetecnico-desenvolvedor-shopper#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  }
+}
