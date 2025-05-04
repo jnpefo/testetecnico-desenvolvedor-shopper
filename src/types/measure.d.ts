@@ -7,9 +7,12 @@ export interface UploadRequest {
     measure_type: MeasureType;
 }
 
-export interface UploadResponse {
+export interface IGetMeasureFromGemini {
     image_url: string;
     measure_value: number;
+}
+
+export interface UploadResponse extends IGetMeasureFromGemini {
     measure_uuid: string;
 }
 

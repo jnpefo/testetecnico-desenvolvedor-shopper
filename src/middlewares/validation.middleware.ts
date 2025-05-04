@@ -3,7 +3,8 @@ import { ValidationError } from "../utils/error.util";
 
 const isBase64 = (str: string): boolean => {
     try {
-        return Buffer.from(str, 'base64').toString('base64') === str;
+        Buffer.from(str, 'base64').toString('base64') === str;
+        return true;
     } catch (e) {
         return false;
     }
@@ -11,7 +12,7 @@ const isBase64 = (str: string): boolean => {
 
 export const validateUploadRequest = (
     req: Request,
-    res: Response,
+    _: Response,
     next: NextFunction
 ) => {
     const { image, customer_code, measure_datetime, measure_type } = req.body;

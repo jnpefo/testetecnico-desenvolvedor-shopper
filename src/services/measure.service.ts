@@ -1,5 +1,12 @@
-import { createMeasure, findExistingMeasureInMonth } from "../models/measure.model";
-import { getMeasureFromGemini, generateTemporaryImageUrl } from "./gemini.service";
+import {
+    createMeasure,
+    findExistingMeasureInMonth,
+    Measure,
+    MeasureType,
+    findMeasuresByCustomer,
+    updateMeasure
+} from "../models/measure.model";
+import { getMeasureFromGemini } from "./gemini.service";
 import { ValidationError } from "../utils/error.util";
 import { UploadRequest, UploadResponse } from "../types/measure";
 
@@ -19,18 +26,15 @@ export const uploadMeasure = async (
     }
 
     // Obter a medida da API do Gemini
-    const measure_value = await getMeasureFromGemini(image);
-
-    // Gerar um link temporário para a imagem
-    const image_url = await generateTemporaryImageUrl();
+    const measureFromGemini = await getMeasureFromGemini(image);
 
     // Criar a medida no "banco de dados"
     const newMeasure = createMeasure({
         customer_code,
         measure_datetime: new Date(measure_datetime),
         measure_type,
-        image_url,
-        measure_value,
+        image_url: measureFromGemini.image_url,
+        measure_value: measureFromGemini.measure_value,
     });
 
     const uploadResponse: UploadResponse = {
@@ -40,4 +44,22 @@ export const uploadMeasure = async (
     };
 
     return uploadResponse;
+};
+
+export const listMeasuresByCustomer = (
+    customer_code: string,
+    measure_type?: MeasureType
+): Measure[] => {
+    return findMeasuresByCustomer(customer_code, measure_type);
+};
+
+export const confirmMeasure = async (
+    measure_uuid: string,
+    confirmed_value: number
+): Promise<void> => {
+    try {
+        await updateMeasure(measure_uuid, confirmed_value);
+    } catch (error: any) {
+        throw error;
+    }
 };
