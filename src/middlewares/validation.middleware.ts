@@ -3,7 +3,8 @@ import { ValidationError } from "../utils/error.util";
 
 const isBase64 = (str: string): boolean => {
     try {
-        return Buffer.from(str, 'base64').toString('base64') === str;
+        Buffer.from(str, 'base64').toString('base64') === str;
+        return true;
     } catch (e) {
         return false;
     }

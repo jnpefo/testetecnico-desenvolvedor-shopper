@@ -1,6 +1,10 @@
 import app from "./app";
+import dotenv from 'dotenv';
 
-const port = 3030; // Porta especificada no teste
+dotenv.config();
+
+const port = process.env.PORT || 80;
+
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });

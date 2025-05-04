@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      - PORT=8080
+      - GEMINI_API_KEY=GEMINI_API_KEY
+    volumes:
+      - ./temp-uploads:/app/temp-uploads
