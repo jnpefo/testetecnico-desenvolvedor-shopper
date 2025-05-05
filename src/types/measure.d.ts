@@ -1,4 +1,4 @@
-export type MeasureType = "WATER" | "GAS";
+export type MeasureType = 'WATER' | 'GAS';
 
 export interface UploadRequest {
     image: string; // base64
@@ -19,4 +19,10 @@ export interface UploadResponse extends IGetMeasureFromGemini {
 export interface ErrorResponse {
     error_code: string;
     error_description: string;
+}
+
+interface AppError extends Error {
+    errorCode?: string;
+    statusCode?: number;
+    message?: string;
 }

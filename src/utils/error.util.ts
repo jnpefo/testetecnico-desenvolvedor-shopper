@@ -5,6 +5,6 @@ export class ValidationError extends Error {
         public statusCode: number
     ) {
         super(message);
-        this.name = "ValidationError";
+        this.name = 'ValidationError';
     }
 }
