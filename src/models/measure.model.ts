@@ -1,4 +1,5 @@
-import { MeasureType } from "../types/measure";
+import { AppError, MeasureType } from '../types/measure';
+import { randomUUID } from 'crypto';
 
 export interface Measure {
     measure_uuid: string;
@@ -12,8 +13,8 @@ export interface Measure {
 
 const measures: Measure[] = []; // Simulando o banco de dados em memória
 
-export const createMeasure = (measure: Omit<Measure, "measure_uuid" | "has_confirmed">): Measure => {
-    const measure_uuid = crypto.randomUUID();  // Using crypto module to generate UUID
+export const createMeasure = (measure: Omit<Measure, 'measure_uuid' | 'has_confirmed'>): Measure => {
+    const measure_uuid = randomUUID();
     const newMeasure: Measure = { ...measure, measure_uuid, has_confirmed: false };
     measures.push(newMeasure);
     return newMeasure;
@@ -58,15 +59,15 @@ export const updateMeasure = async (
     const measureIndex = measures.findIndex((m) => m.measure_uuid === measure_uuid);
 
     if (measureIndex === -1) {
-        const error: any = new Error("Leitura não encontrada");
-        error.errorCode = "MEASURE_NOT_FOUND";
+        const error: AppError = new Error('Leitura não encontrada');
+        error.errorCode = 'MEASURE_NOT_FOUND';
         error.statusCode = 404;
         throw error;
     }
 
     if (measures[measureIndex].has_confirmed) {
-        const error: any = new Error("Leitura já confirmada");
-        error.errorCode = "CONFIRMATION_DUPLICATE";
+        const error: AppError = new Error('Leitura já confirmada');
+        error.errorCode = 'CONFIRMATION_DUPLICATE';
         error.statusCode = 409;
         throw error;
     }

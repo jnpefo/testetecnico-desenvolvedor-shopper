@@ -5,10 +5,10 @@ import {
     MeasureType,
     findMeasuresByCustomer,
     updateMeasure
-} from "../models/measure.model";
-import { getMeasureFromGemini } from "./gemini.service";
-import { ValidationError } from "../utils/error.util";
-import { UploadRequest, UploadResponse } from "../types/measure";
+} from '../models/measure.model';
+import { getMeasureFromGemini } from './gemini.service';
+import { ValidationError } from '../utils/error.util';
+import { UploadRequest, UploadResponse } from '../types/measure';
 
 export const uploadMeasure = async (
     uploadRequest: UploadRequest
@@ -22,7 +22,7 @@ export const uploadMeasure = async (
         new Date(measure_datetime)
     );
     if (existingMeasure) {
-        throw new ValidationError("DOUBLE_REPORT", "Leitura do mês já realizada", 409);
+        throw new ValidationError('DOUBLE_REPORT', 'Leitura do mês já realizada', 409);
     }
 
     // Obter a medida da API do Gemini
@@ -57,9 +57,5 @@ export const confirmMeasure = async (
     measure_uuid: string,
     confirmed_value: number
 ): Promise<void> => {
-    try {
-        await updateMeasure(measure_uuid, confirmed_value);
-    } catch (error: any) {
-        throw error;
-    }
+    await updateMeasure(measure_uuid, confirmed_value);
 };
