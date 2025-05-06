@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ValidationError } from '../utils/error.util';
+import { ValidationError } from '../utils/error.util.js';
 import validator from 'validator';
 import { isValid, parseISO } from 'date-fns';
 import { Buffer } from 'node:buffer';

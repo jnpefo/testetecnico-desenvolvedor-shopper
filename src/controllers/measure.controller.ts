@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { uploadMeasure, listMeasuresByCustomer, confirmMeasure } from '../services/measure.service';
-import { MeasureType, UploadRequest } from '../types/measure';
-import { ValidationError } from '../utils/error.util';
+import { uploadMeasure, listMeasuresByCustomer, confirmMeasure } from '../services/measure.service.js';
+import { MeasureType, UploadRequest } from '../types/measure.js';
+import { ValidationError } from '../utils/error.util.js';
 
 export const upload = async (req: Request, res: Response) => {
     try {

@@ -1,10 +1,15 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import dotenv from 'dotenv';
 import { GoogleGenAI, createUserContent } from '@google/genai';
 import fs from 'fs/promises';
-import path from 'path';
 import crypto from 'crypto';
 import { fileTypeFromBuffer } from 'file-type';
-import { AppError, IGetMeasureFromGemini } from '../types/measure';
+import { AppError, IGetMeasureFromGemini } from '../types/measure.js';
 
 dotenv.config();
 const geminiApiKey = process.env.GEMINI_API_KEY;

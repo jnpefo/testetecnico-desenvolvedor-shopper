@@ -5,10 +5,10 @@ import {
     MeasureType,
     findMeasuresByCustomer,
     updateMeasure
-} from '../models/measure.model';
-import { getMeasureFromGemini } from './gemini.service';
-import { ValidationError } from '../utils/error.util';
-import { UploadRequest, UploadResponse } from '../types/measure';
+} from '../models/measure.model.js';
+import { getMeasureFromGemini } from './gemini.service.js';
+import { ValidationError } from '../utils/error.util.js';
+import { UploadRequest, UploadResponse } from '../types/measure.js';
 
 export const uploadMeasure = async (
     uploadRequest: UploadRequest

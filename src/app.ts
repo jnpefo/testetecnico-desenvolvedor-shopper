@@ -1,6 +1,6 @@
 import express from 'express';
-import measureRoutes from './routes/measure.route';
-import healthRoutes from './routes/health.route';
+import measureRoutes from './routes/measure.route.js';
+import healthRoutes from './routes/health.route.js';
 
 const app = express();
 
