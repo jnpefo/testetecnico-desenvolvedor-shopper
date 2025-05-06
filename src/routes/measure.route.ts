@@ -1,6 +1,6 @@
 import express from 'express';
-import { confirm, list, upload } from '../controllers/measure.controller';
-import { validateUploadRequest } from '../middlewares/validation.middleware';
+import { confirm, list, upload } from '../controllers/measure.controller.js';
+import { validateUploadRequest } from '../middlewares/validation.middleware.js';
 
 const router = express.Router();
 

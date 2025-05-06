@@ -1,4 +1,4 @@
-import { AppError, Measure, MeasureType } from '../types/measure';
+import { AppError, Measure, MeasureType } from '../types/measure.js';
 import { randomUUID } from 'crypto';
 
 export const createMeasure = (measure: Omit<Measure, 'measure_uuid' | 'has_confirmed'>): Measure => {
