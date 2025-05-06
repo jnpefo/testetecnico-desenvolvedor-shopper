@@ -11,12 +11,8 @@ const isBase64 = (str: string): boolean => {
     try {
         Buffer.from(str, 'base64').toString('base64') === str;
         return true;
-    } catch (error: unknown) {
-        if (error) { 
-            return false;
-        } else {
-            return false;
-        }
+    } catch {
+        return false;
     }
 };
 
